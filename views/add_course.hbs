@@ -1,0 +1,76 @@
+<!--
+Used the bootstrap to set the css format, such as table format and navbar format.
+bootstrap css format & Bundle link: https://getbootstrap.com/docs/5.0/getting-started/introduction/
+bootstrap icons format link: https://icons.getbootstrap.com/
+
+-->
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/course">Courses table</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add New Courses</li>
+  </ol>
+</nav>
+
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{alert}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+<form class="row g-3 needs-validation" method="POST" action="/addcourse" novalidate>
+
+    {{!-- {{>course_form}} --}}
+
+
+      <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" class = "form-control" id = "floatingInput" value="{{this.course_id}}" placeholder="Course ID" name="course_id">
+            <label for =" floatingInput">Course ID</label>
+        </div>
+    </div>  
+
+    <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="text" class = "form-control" id = "floatingInput" value="{{this.course_name}}" placeholder="Course Name" name="course_name">
+            <label for =" floatingInput">Course Name</label>
+        </div>
+    </div> 
+
+        {{!-- <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="number" class = "form-control" id = "floatingInput" value="{{this.department_id}}" placeholder="Department ID" name="department_id">
+            <label for =" floatingInput">Department ID</label>
+        </div>
+    </div> 
+
+        <div class="col-6">
+        <div class="form-floating mb-3">
+            <input type="number" class = "form-control" id = "floatingInput" value="{{this.instructor_id}}" placeholder="Instructor ID" name="instructor_id">
+            <label for =" floatingInput">Instructor ID</label>
+        </div>
+    </div>  --}}
+        <div class="col-6">
+        <select class="form-select" aria-label="Default select example">
+        <option selected>Department ID</option>
+        {{#each foo1}}
+        <option value="{{this.department_id}}">{{this.department_id}} - {{this.department_name}}</option>
+        {{/each}}
+        </select>
+        </div>
+
+        <div class="col-6">
+        <select class="form-select" aria-label="Default select example">
+        <option selected>Instructor ID</option>
+        {{#each foo2}}
+        <option value="{{this.instructor_id}}">{{this.instructor_id}}</option>
+        {{/each}}
+        </select>
+        </div>
+
+    <div class = "col-12 d-grid">
+        <button class = "btn btn-primary" type = "submit">Submit</button>
+    </div>
+
+</form>

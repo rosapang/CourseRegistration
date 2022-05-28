@@ -1,0 +1,47 @@
+<!--
+Used the bootstrap to set the css format, such as table format and navbar format.
+bootstrap css format & Bundle link: https://getbootstrap.com/docs/5.0/getting-started/introduction/
+bootstrap icons format link: https://icons.getbootstrap.com/
+
+-->
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/c2s">Courses2Students table</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add New Courses + Students</li>
+  </ol>
+</nav>
+
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{alert}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+<form class="row g-3 needs-validation" method="POST" action="/addc2s" novalidate>
+
+    {{!-- {{>c2s_form}} --}}
+
+    <div class="col-6">
+      <select class="form-select" aria-label="Default select example">
+      <option selected>Course ID</option>
+      {{#each foo1}}
+      <option value="{{this.course_id}}">{{this.course_id}}</option>
+      {{/each}}
+      </select>
+    </div>
+
+    <div class="col-6">
+      <select class="form-select" aria-label="Default select example">
+      <option selected>Student ID</option>
+      {{#each foo2}}
+      <option value="{{this.student_id}}">{{this.student_id}}</option>
+      {{/each}}
+      </select>
+    </div>
+
+    <div class = "col-12 d-grid">
+        <button class = "btn btn-primary" type = "submit">Submit</button>
+    </div>
+</form>

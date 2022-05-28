@@ -1,0 +1,28 @@
+<!--
+Used the bootstrap to set the css format, such as table format and navbar format.
+bootstrap css format & Bundle link: https://getbootstrap.com/docs/5.0/getting-started/introduction/
+bootstrap icons format link: https://icons.getbootstrap.com/
+
+-->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/instructor">Instructors table</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit Instructors</li>
+  </ol>
+</nav>
+
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{alert}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+{{#each rows}}
+<form class="row g-3 needs-validation" method="POST" action="/editinstructor/{{this.instructor_id}}" novalidate>
+
+        {{>instructor_form}}
+
+</form>
+
+{{/each}}

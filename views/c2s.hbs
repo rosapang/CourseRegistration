@@ -1,0 +1,57 @@
+<!--
+Used the bootstrap to set the css format, such as table format and navbar format.
+bootstrap css format & Bundle link: https://getbootstrap.com/docs/5.0/getting-started/introduction/
+bootstrap icons format link: https://icons.getbootstrap.com/
+
+-->
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/department">Departments Table</a></li>
+    <li class="breadcrumb-item"><a href="/student">Students Table</a></li>
+    <li class="breadcrumb-item"><a href="/instructor">Instructors Table</a></li>
+    <li class="breadcrumb-item"><a href="/course">Courses Table</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Courses2Students table</li>
+  </ol>
+</nav>
+</br>
+
+<div class="row">
+    <div class="col-6 fs-2 text-center">Courses2Students Table</div>
+    <div class="col-6 d-flex justify-content-end">
+        <a href="addc2s" type = "button" class = "btn btn-dark btn-small align-self-center">Add Courses + Students</a>
+    </div>
+
+</div>
+
+<form class="d-flex" method="POST" action="/c2s" novalidate>
+    <input class="form-control me-2" type="search" placeholder="Search by ID..." name = "search" aria-label="Search">
+    <button class="btn btn-outline-dark" type="submit">Search</button>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Course ID</th>
+      <th scope="col">Student ID</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each rows}}
+    <tr>
+      <th scope="row">{{this.id}}</th>
+      <th>{{this.course_id}}</th>
+      <td>{{this.student_id}}</td>
+            <td>
+        <a href = "/editc2s/{{this.id}}" type = "button" class = "btn btn-dark btn-small"><i class = "bi bi-pencil"></i>Edit</a>
+        <a href = "/c2s/{{this.id}}" type = "button" class = "btn btn-dark btn-small"><i class = "bi bi-trash"></i>Delete</a>
+
+      </td>
+    </tr>
+    {{/each}}
+    
+  </tbody>
+</table>
